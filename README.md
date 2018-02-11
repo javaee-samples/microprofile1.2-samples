@@ -25,13 +25,13 @@ These are the available container profiles:
       reuse this instance to run the tests.
       Useful for development to avoid the server start up cost per sample.
  * Liberty      
-  * ``liberty-ci-managed``
+   * ``liberty-ci-managed``
   
       This profile uses the special "wlp-microProfile1" distribution of Liberty, which contains the MicroProfile APIs out of the box
       and start up the server per sample. 
       Useful for CI servers. The Liberty version that's used can be set via the ``liberty.version`` property.
  * WildFly      
-  * ``wildfly-ci-managed``
+   * ``wildfly-ci-managed``
 
       This profile is based on WildFly Swarm, and includes the MicroProfile 1.2 fragment. The actual WildFly Swarm code and thus
       the WildFly code is handled internally by the Arquillian connector. 
