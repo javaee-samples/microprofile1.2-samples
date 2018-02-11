@@ -13,7 +13,8 @@
     <name>MicroProfile 1.2: JWT-AUTH</name>
 
     <modules>
-        	<module>basic-authentication</module>
+        <module>basic-authentication</module>   
+        <module>jaxrs</module>
     </modules>
 
     <dependencies>

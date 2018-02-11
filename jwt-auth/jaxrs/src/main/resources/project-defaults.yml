@@ -1,0 +1,33 @@
+# A project defaults for use with MP-JWT auth-method
+# Based on https://github.com/MicroProfileJWT/wfswarm-jwt-auth-tck/blob/master/src/main/resources/project-defaults.yml
+swarm:
+  bind:
+    address: localhost
+  microprofile:
+    jwtauth:
+      token:
+        issuedBy: "org.eclipse.microprofile12"
+  logging:
+    loggers:
+      io.undertow.request.security:
+        level: TRACE
+  security:
+    security-domains:
+      MP-JWT:
+        jaspi-authentication:
+          login-module-stacks:
+            roles-lm-stack:
+              login-modules:
+                # This stack performs the token verification and group to role mapping
+                - login-module: rm
+                  code: org.wildfly.swarm.microprofile.jwtauth.deployment.auth.jaas.JWTLoginModule
+                  flag: required
+                  module-options:
+                    rolesProperties: jwt-roles.properties
+          auth-modules:
+          # This module integrates the MP-JWT custom authentication mechanism into the web container
+            http:
+              code: org.wildfly.extension.undertow.security.jaspi.modules.HTTPSchemeServerAuthModule
+              module: org.wildfly.extension.undertow
+              flag: required
+              login-module-stack-ref: roles-lm-stack
