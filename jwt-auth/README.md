@@ -1,5 +1,7 @@
 # Eclipse MicroProfile 1.2 Samples - JWT Auth 1.0
 
+ - [Wiki project page](https://wiki.eclipse.org/MicroProfile/JWT_Auth)
+ - [Spec, API, TCK GitHub repo](https://github.com/eclipse/microprofile-jwt-auth)
 
 ## Samples ##
 
@@ -22,3 +24,15 @@ There's at least 2 items that need to be configured in an implementation specifi
      - *issuer* - defined in "project-default.yml" which is placed in the classpath root of the application archive. This also configures the security system (security domain in JBoss terms) such that all artifacts to support MP-Auth JWT are installed
      - *public key* - the file "MP-JWT-SIGNER" which is placed in the classpath's META-INF of the application archive.
      
+     
+## TCK ##
+
+The public/private keys are taken from the MP-Auth TCK. The Liberty key is in a special format and has been taken from the Liberty TCK version. Config files for the various servers are inspired by those in the TCK and TCK extensions.
+
+See the following URLs:
+
+ - [MP-Auth TCK](https://github.com/eclipse/microprofile-jwt-auth/tree/master/tck)
+ - [Payara TCK Ext](https://github.com/payara/Payara/tree/Payara-5/appserver/payara-appserver-modules/microprofile/jwt-auth-tck)
+ - [Liberty TCK](https://github.com/OpenLiberty/open-liberty/tree/master/dev/com.ibm.ws.security.mp.jwt_fat_tck)
+ - [WildFly TCK Ext](https://github.com/MicroProfileJWT/wfswarm-jwt-auth-tck)
+
