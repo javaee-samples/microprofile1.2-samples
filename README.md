@@ -1,5 +1,7 @@
 # Eclipse MicroProfile 1.2 samples #
 
+[![Build Status](https://travis-ci.org/javaee-samples/microprofile1.2-samples.svg?branch=master)](https://travis-ci.org/javaee-samples/microprofile1.2-samples)
+
 This workspace consists of MicroProfile 1.2 Samples and unit tests. They are categorized in different directories, one for each Technology/spec.
 
 Some samples/tests have documentation, otherwise read the code. 
