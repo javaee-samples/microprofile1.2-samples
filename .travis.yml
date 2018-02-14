@@ -6,4 +6,4 @@ env:
   - SERVER=payara-ci-managed
   - SERVER=liberty-ci-managed
   - SERVER=wildfly-ci-managed
-script: mvn clean install -P $SERVER --fail-at-end
+script: mvn clean install -P $SERVER --fail-at-end -U
