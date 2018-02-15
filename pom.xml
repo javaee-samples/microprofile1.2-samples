@@ -90,6 +90,7 @@
     <modules>
         <module>config</module>
         <module>jwt-auth</module>
+        <module>metrics</module>
         <module>test-utils</module>
     </modules>
 
@@ -142,7 +143,12 @@
             <version>1.0</version>
             <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.eclipse.microprofile.metrics</groupId>
+            <artifactId>microprofile-metrics-api</artifactId>
+            <version>1.0</version>
+            <scope>provided</scope>
+        </dependency>
 
         <!-- Test dependencies which can be used in sub-modules -->
 
