@@ -680,7 +680,9 @@
         
         
 
-
+        <profile>
+            <id>nothing</id>
+        </profile>
 
         <!-- Activate this profile to download javadoc and sources jars. 
             run: mvn process-resources -Ddownload Notice: This feature has been removed 
