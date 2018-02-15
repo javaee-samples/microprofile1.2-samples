@@ -125,9 +125,6 @@ public class ApplicationMetricsTest {
         assertEquals(jsonObject.getInt("org.eclipse.microprofile12.metrics.application.UserResource.getUsers"), 2);
         assertEquals(jsonObject.getInt("org.eclipse.microprofile12.metrics.application.UserResource.getUserCount"), 5);
     }
-    
-//      "org.eclipse.microprofile12.metrics.application.UserResource.getUsers" : 2,
-//  "org.eclipse.microprofile12.metrics.application.UserResource.getUserCount" : 5
 
     private WebTarget getApplicationMetricTarget() throws IOException {
         return newClient().target(URI.create(new URL(base, "/metrics/application").toExternalForm()));
