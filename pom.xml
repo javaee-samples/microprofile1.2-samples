@@ -546,9 +546,16 @@
                                 <configuration>
                                     <artifactItems>
                                         <artifactItem>
+                                            <!-- Open Liberty -->
+                                            <groupId>io.openliberty</groupId>
+                                            <artifactId>openliberty-runtime</artifactId>
+                                            <version>${liberty.version}</version>
+                                            
+                                            <!-- Closed Liberty -->
+                                            <!--  
                                             <groupId>com.ibm.websphere.appserver.runtime</groupId>
                                             <artifactId>wlp-microProfile1</artifactId>
-                                            <version>${liberty.version}</version>
+                                            <version>${liberty.version}</version>-->
                                             <type>zip</type>
                                             <overWrite>false</overWrite>
                                             <outputDirectory>${project.build.directory}</outputDirectory>
