@@ -4,9 +4,10 @@ jdk:
 
 env:
   - SERVER=payara-ci-managed
+  - SERVER=payara-micro-managed
   - SERVER=liberty-ci-managed
   - SERVER=wildfly-ci-managed
   
-install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V -U -Pnothing
+install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Pnothing
   
-script: mvn clean install -P $SERVER --fail-at-end -U
+script: mvn clean install -P $SERVER --fail-at-end
