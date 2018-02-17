@@ -91,6 +91,7 @@
         Each spec is represented by one module. "test-utils" is a helper module. -->
     <modules>
         <module>config</module>
+        <module>fault-tolerance</module>
         <module>jwt-auth</module>
         <module>metrics</module>
         <module>test-utils</module>
@@ -137,6 +138,12 @@
             <groupId>org.eclipse.microprofile.config</groupId>
             <artifactId>microprofile-config-api</artifactId>
             <version>1.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.microprofile.fault-tolerance</groupId>
+            <artifactId>microprofile-fault-tolerance-api</artifactId>
+            <version>1.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -619,6 +626,29 @@
         
         <profile>
             <id>wildfly-ci-managed</id>
+            
+            <!-- 
+                WildFly is very sensitive for the exact Arquillian version used.
+                If the version is not right, the Swarm connector will create 2 deployments
+                per test, which fails.
+            
+             -->
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jboss.arquillian</groupId>
+                        <artifactId>arquillian-bom</artifactId>
+                        <version>1.2.1.Final</version>
+                        <scope>import</scope>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jboss.arquillian.container</groupId>
+                        <artifactId>arquillian-container-test-api</artifactId>
+                        <version>1.2.1.Final</version>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
 
             <dependencies>
                 <!-- Needed for websocket tests that use ContainerProvider.getWebSocketContainer()

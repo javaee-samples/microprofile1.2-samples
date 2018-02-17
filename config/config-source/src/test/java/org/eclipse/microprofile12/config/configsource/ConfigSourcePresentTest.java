@@ -29,7 +29,7 @@ public class ConfigSourcePresentTest {
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
         WebArchive archive = 
-            create(WebArchive.class)
+            create(WebArchive.class, "ConfigSourcePresentTest.war")
                 .addClasses(
                     ApplicationInit.class,
                     EchoConfigSource.class,

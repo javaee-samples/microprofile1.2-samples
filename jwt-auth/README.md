@@ -7,6 +7,7 @@
 
  - **basic-authentication** The test sends a very basic signed JWT token to a protected servlet. The MP-JWT Auth implementation
    checks if the token is valid and sets the authenticated identity from the `upn` field and `groups` field
+   **jaxrs ** Just like basic-authentication, but uses a JAX-RS endpoint. Specifically demonstrates the support of @RolesAllowed to secure and endpoint.
    
 
 

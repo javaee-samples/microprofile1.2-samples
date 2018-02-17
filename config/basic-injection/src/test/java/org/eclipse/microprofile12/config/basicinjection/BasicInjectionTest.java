@@ -29,7 +29,7 @@ public class BasicInjectionTest {
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
         WebArchive archive = 
-            create(WebArchive.class)
+            create(WebArchive.class, "BasicInjectionTest.war")
                 .addClasses(
                     ApplicationInit.class,
                     Servlet.class

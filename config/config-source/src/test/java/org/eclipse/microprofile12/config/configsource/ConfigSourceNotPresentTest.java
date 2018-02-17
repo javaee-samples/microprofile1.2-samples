@@ -30,7 +30,7 @@ public class ConfigSourceNotPresentTest {
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
         WebArchive archive = 
-            create(WebArchive.class)
+            create(WebArchive.class, "ConfigSourceNotPresentTest.war")
                 .addClasses(
                     ApplicationInit.class,
                     Servlet.class
