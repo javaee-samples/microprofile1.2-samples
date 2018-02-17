@@ -2,9 +2,10 @@
 
 [![Build Status](https://travis-ci.org/javaee-samples/microprofile1.2-samples.svg?branch=master)](https://travis-ci.org/javaee-samples/microprofile1.2-samples)
 
-This workspace consists of MicroProfile 1.2 Samples and unit tests. They are categorized in different directories, one for each Technology/spec.
+This workspace consists of MicroProfile 1.2 Samples and unit tests. MicroProfile is a code first, open API initiative about optimizing Enterprise Java for a microservices architecture.  See [microprofile.io](https://microprofile.io) for additional info.
 
-Some samples/tests have documentation, otherwise read the code. 
+Samples are categorized in different directories, one for each technology/spec. 
+
 
 ## How to run? ##
 
@@ -20,6 +21,11 @@ These are the available container profiles:
       This profile will install a Payara server and start up the server per sample.
       Useful for CI servers. The Payara version that's used can be set via the ``payara.version`` property.
       This is the default profile and does not have to be specified explicitly.
+      
+  * ``payara-micro-managed``
+    
+      This profile will install Payara Micro and start up the jar per sample.
+      Useful for CI servers. The Payara Micro version that's used can be set via the ``payara.micro.version`` property.
 
   * ``payara-remote``
     
