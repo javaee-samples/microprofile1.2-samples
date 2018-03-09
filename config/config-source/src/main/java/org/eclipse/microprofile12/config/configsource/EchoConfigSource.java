@@ -48,14 +48,20 @@ import org.eclipse.microprofile.config.spi.ConfigSource;
  *
  * Example config source that echos back the input prepending the string "ECHO: " This config source
  * will resolve only property names that start with "echo." prefix, otherwise returns null.
- * 
+ *
+ * <p>
+ * Note: On Payara and WildFly this will function as a dynamic source, but on Liberty the protection
+ *       mandated by the spec to only handle declared property names is enforced.
+ *
  * @author Steve Millidge (Payara Foundation)
  */
 public class EchoConfigSource implements ConfigSource {
 
     @Override
     public Map<String, String> getProperties() {
-        return new HashMap<>();
+        Map<String, String> properties = new HashMap<>();
+        properties.put("echo.property", getValue("echo.property"));
+        return properties;
     }
 
     @Override
@@ -67,9 +73,9 @@ public class EchoConfigSource implements ConfigSource {
     public String getValue(String propertyName) {
         if (propertyName.startsWith("echo.")) {
             return "ECHO: " + propertyName;
-        } 
-        
-        return null;        
+        }
+
+        return null;
     }
 
     @Override
