@@ -533,7 +533,7 @@
                 <dependency>
                     <groupId>org.jboss.arquillian.container</groupId>
                     <artifactId>arquillian-wlp-managed-8.5</artifactId>
-                    <version>1.0.0.Beta2</version>
+                    <version>1.0.0.CR1</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
@@ -565,7 +565,7 @@
                                             <version>${liberty.version}</version>-->
                                             <type>zip</type>
                                             <overWrite>false</overWrite>
-                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                            <outputDirectory>${session.executionRootDirectory}/target/</outputDirectory>
                                         </artifactItem>
                                     </artifactItems>
                                 </configuration>
@@ -592,14 +592,14 @@
                                         <copy
                                             failonerror="false"
                                             file="../../test-utils/src/main/resources/server.xml"
-                                            tofile="${project.build.directory}/wlp/templates/servers/defaultServer/server.xml"
+                                            tofile="${session.executionRootDirectory}/target/wlp/templates/servers/defaultServer/server.xml"
                                         />
                                         <echo>Copying key.jks</echo>
-                                        <mkdir dir="${project.build.directory}/wlp/templates/servers/defaultServer/resources/security/" />
+                                        <mkdir dir="${session.executionRootDirectory}/target/wlp/templates/servers/defaultServer/resources/security/" />
                                         <copy
                                             failonerror="false"
                                             file="../../test-utils/src/main/resources/key.jks"
-                                            tofile="${project.build.directory}/wlp/templates/servers/defaultServer/resources/security/key.jks"
+                                            tofile="${session.executionRootDirectory}/target/wlp/templates/servers/defaultServer/resources/security/key.jks"
                                         />
                                     </tasks>
                                 </configuration>
@@ -612,7 +612,10 @@
                         <configuration>
                             <systemPropertyVariables>
                                 <arquillian.launch>liberty-ci-managed</arquillian.launch>
-                                <arquillian.liberty.wlpHome>${project.build.directory}/wlp</arquillian.liberty.wlpHome>
+                                <!--  
+                                <arquillian.launch>liberty-ci-managed-debug</arquillian.launch>
+                                -->
+                                <arquillian.liberty.wlpHome>${session.executionRootDirectory}/target/wlp</arquillian.liberty.wlpHome>
                             </systemPropertyVariables>
                         </configuration>
                     </plugin>

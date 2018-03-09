@@ -17,5 +17,13 @@
             <property name="wlpHome">${arquillian.liberty.wlpHome}</property>
         </configuration>
     </container>
+    
+     <container qualifier="liberty-ci-managed-debug">
+        <configuration>
+            <property name="deployType">xml</property>
+            <property name="wlpHome">${arquillian.liberty.wlpHome}</property>
+            <property name="javaVmArguments">-Dwas.debug.mode=true -Dcom.ibm.websphere.ras.inject.at.transform=true -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005</property>
+        </configuration>
+    </container>
 
 </arquillian>
