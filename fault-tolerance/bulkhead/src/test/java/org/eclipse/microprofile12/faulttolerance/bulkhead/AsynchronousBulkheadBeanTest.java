@@ -96,10 +96,10 @@ public class AsynchronousBulkheadBeanTest {
             try {
                 future.get();
             } catch (InterruptedException ie) {
-                Logger.getLogger(AsynchronousBulkheadBean.class.getName()).log(Level.SEVERE, null, ie);
+                Logger.getLogger(AsynchronousBulkheadBeanTest.class.getName()).log(Level.SEVERE, null, ie);
                 Assert.fail("Got an unexpected InterruptedException");
             } catch (ExecutionException ex) {
-                Logger.getLogger(AsynchronousBulkheadBean.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AsynchronousBulkheadBeanTest.class.getName()).log(Level.SEVERE, null, ex);
                 Assert.fail("Got an unexpected ExecutionException");
             } catch (BulkheadException be) {
                 failures ++;
@@ -132,10 +132,10 @@ public class AsynchronousBulkheadBeanTest {
             try {
                 future.get();
             } catch (InterruptedException ie) {
-                Logger.getLogger(AsynchronousBulkheadBean.class.getName()).log(Level.SEVERE, null, ie);
+                Logger.getLogger(AsynchronousBulkheadBeanTest.class.getName()).log(Level.SEVERE, null, ie);
                 Assert.fail("Got an unexpected InterruptedException");
             } catch (ExecutionException ex) {
-                Logger.getLogger(AsynchronousBulkheadBean.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AsynchronousBulkheadBeanTest.class.getName()).log(Level.SEVERE, null, ex);
                 Assert.fail("Got an unexpected ExecutionException");
             } catch (BulkheadException be) {
                 failures ++;

@@ -96,7 +96,12 @@ public class ClassLevelBulkheadBeanTest {
                 Logger.getLogger(ClassLevelBulkheadBeanTest.class.getName()).log(Level.SEVERE, null, ie);
                 Assert.fail("Got an unexpected InterruptedException");
             } catch (ExecutionException ex) {
-                failures ++;
+                if (ex.getCause() instanceof BulkheadException) {
+                    failures ++;
+                } else {
+                    Logger.getLogger(ClassLevelBulkheadBeanTest.class.getName()).log(Level.SEVERE, null, ex);
+                    Assert.fail("Got an unexpected ExecutionException");
+                }
             }
         }
         
