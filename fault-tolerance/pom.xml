@@ -17,6 +17,7 @@
         <module>bulkhead</module>
         <module>circuitbreaker</module>
     <module>timeout</module>
+    <module>retry</module>
   </modules>
 
     <dependencies>
