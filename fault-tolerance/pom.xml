@@ -18,6 +18,7 @@
         <module>circuitbreaker</module>
     <module>timeout</module>
     <module>retry</module>
+    <module>fallback</module>
   </modules>
 
     <dependencies>
