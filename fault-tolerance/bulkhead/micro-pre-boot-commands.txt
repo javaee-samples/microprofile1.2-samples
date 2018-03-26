@@ -1,0 +1,11 @@
+set resources.managed-executor-service.concurrent/__defaultManagedExecutorService.core-pool-size=0
+set resources.managed-executor-service.concurrent/__defaultManagedExecutorService.hung-after-seconds=0
+set resources.managed-executor-service.concurrent/__defaultManagedExecutorService.keep-alive-seconds=60
+set resources.managed-executor-service.concurrent/__defaultManagedExecutorService.long-running-tasks=false
+set resources.managed-executor-service.concurrent/__defaultManagedExecutorService.task-queue-capacity=2147483647
+set resources.managed-executor-service.concurrent/__defaultManagedExecutorService.maximum-pool-size=2147483647
+set resources.managed-scheduled-executor-service.concurrent/__defaultManagedScheduledExecutorService.core-pool-size=0
+set resources.managed-scheduled-executor-service.concurrent/__defaultManagedScheduledExecutorService.long-running-tasks=false
+set resources.managed-scheduled-executor-service.concurrent/__defaultManagedScheduledExecutorService.keep-alive-seconds=60
+set resources.managed-scheduled-executor-service.concurrent/__defaultManagedScheduledExecutorService.hung-after-seconds=0
+

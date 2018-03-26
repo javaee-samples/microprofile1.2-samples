@@ -15,7 +15,9 @@
     <modules>
         <module>asynchronous</module>
         <module>bulkhead</module>
-    </modules>
+        <module>circuitbreaker</module>
+    <module>timeout</module>
+  </modules>
 
     <dependencies>
         <dependency>
