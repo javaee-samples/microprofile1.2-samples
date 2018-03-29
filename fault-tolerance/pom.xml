@@ -14,7 +14,13 @@
 
     <modules>
         <module>asynchronous</module>
-    </modules>
+        <module>bulkhead</module>
+        <module>circuitbreaker</module>
+    <module>timeout</module>
+    <module>retry</module>
+    <module>fallback</module>
+    <module>testy</module>
+  </modules>
 
     <dependencies>
         <dependency>
