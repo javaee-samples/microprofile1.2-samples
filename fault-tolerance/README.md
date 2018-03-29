@@ -6,6 +6,11 @@
 ## Samples ##
 
  - **asynchronous** Demonstrates a CDI version of the EJB @Asynchronous annotation
+ - **bulkhead** 
+ - **fallback** 
+ - **retry** 
+ - **timeout** 
+ 
  
    
 
