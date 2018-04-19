@@ -1,56 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright Payara Services Limited -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.eclipse.microprofile.samples12</groupId>
-    <artifactId>samples-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+	<prerequisites>
+		<maven>3.5</maven>
+	</prerequisites>
 
-    <name>Eclipse MicroProfile 1.2 Samples: root</name>
+	<groupId>org.eclipse.microprofile.samples12</groupId>
+	<artifactId>samples-parent</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
-    <properties>
-        <java.min.version>1.8</java.min.version>
-        <maven.min.version>3.0.0</maven.min.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<name>Eclipse MicroProfile 1.2 Samples: root</name>
 
-        <maven.test.skip>false</maven.test.skip>
-        <skipTests>false</skipTests>
+	<properties>
+		<java.min.version>1.8</java.min.version>
+		<maven.min.version>3.5</maven.min.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <skipEJB>${skipTests}</skipEJB>
-        <skipCDI>${skipTests}</skipCDI>
-        <skipJSF>${skipTests}</skipJSF>
-        <skipJACC>${skipTests}</skipJACC>
+		<maven.test.skip>false</maven.test.skip>
+		<skipTests>false</skipTests>
 
-        <!-- Micro implementation versions (these are downloaded and installed 
-            in these versions by Maven for the CI profiles) -->
-        <payara.version>5.182-SNAPSHOT</payara.version>
-        <payara.micro.version>5.182-SNAPSHOT</payara.micro.version>
-        <liberty.version>17.0.0.4</liberty.version>
-        <wildfly.version>2018.2.0.Final</wildfly.version>
-        
-        <payara.container.version>1.0.Beta3-m3</payara.container.version>
-        <payara.micro.container.version>5.Beta3-m3</payara.micro.container.version> 
-    </properties>
+		<skipEJB>${skipTests}</skipEJB>
+		<skipCDI>${skipTests}</skipCDI>
+		<skipJSF>${skipTests}</skipJSF>
+		<skipJACC>${skipTests}</skipJACC>
 
-    <repositories>
-        <repository>
-            <id>central</id>
-            <name>Central Repository</name>
+		<!-- Micro implementation versions (these are downloaded and installed 
+			in these versions by Maven for the CI profiles) -->
+		<payara.version>5.182-SNAPSHOT</payara.version>
+		<payara.micro.version>5.182-SNAPSHOT</payara.micro.version>
+		<liberty.version>17.0.0.4</liberty.version>
+		<wildfly.version>2018.4.1</wildfly.version>
 
-            <url>https://repo.maven.apache.org/maven2</url>
+		<payara.container.version>1.0.Beta3</payara.container.version>
+		<payara.micro.container.version>5.Beta3-m3</payara.micro.container.version>
+	</properties>
 
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-	    </repository>
-	
+	<repositories>
+		<repository>
+			<id>central</id>
+			<name>Central Repository</name>
+
+			<url>https://repo.maven.apache.org/maven2</url>
+
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
 		<repository>
 			<id>payara-milestones</id>
 			<name>Payara Milestones</name>
@@ -63,304 +68,305 @@
 			</snapshots>
 		</repository>
 
-        <repository>
-            <id>ossrh</id>
-            <name>Sonatype-snapshot</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
+		<repository>
+			<id>ossrh</id>
+			<name>Sonatype-snapshot</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
 
-        <repository>
-            <id>jvnet-nexus-staging</id>
-            <name>Java.net Staging Repositories</name>
-            <url>https://maven.java.net/content/repositories/staging</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
+		<repository>
+			<id>jvnet-nexus-staging</id>
+			<name>Java.net Staging Repositories</name>
+			<url>https://maven.java.net/content/repositories/staging</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
 
-    </repositories>
-
-
-    <!-- The MicroProfile 1.2 specs that this project is providing samples for. 
-        Each spec is represented by one module. "test-utils" is a helper module. -->
-    <modules>
-        <module>config</module>
-        <module>fault-tolerance</module>
-        <module>jwt-auth</module>
-        <module>metrics</module>
-        <module>test-utils</module>
-    </modules>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.jboss.arquillian</groupId>
-                <artifactId>arquillian-bom</artifactId>
-                <version>1.3.0.Final</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.arquillian.container</groupId>
-                <artifactId>arquillian-container-test-api</artifactId>
-                <version>1.3.0.Final</version>
-            </dependency>
-            <dependency>
-                <groupId>com.h2database</groupId>
-                <artifactId>h2</artifactId>
-                <version>1.4.196</version>
-            </dependency>
-            <dependency>
-                <groupId>fish.payara.arquillian</groupId>
-                <artifactId>payara-client-ee7</artifactId>
-                <version>1.0.Beta3-m2</version>
-                <scope>test</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+	</repositories>
 
 
-    <dependencies>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.eclipse.microprofile.config</groupId>
-            <artifactId>microprofile-config-api</artifactId>
-            <version>1.1</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.microprofile.fault-tolerance</groupId>
-            <artifactId>microprofile-fault-tolerance-api</artifactId>
-            <version>1.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.microprofile.jwt</groupId>
-            <artifactId>microprofile-jwt-auth-api</artifactId>
-            <version>1.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.microprofile.metrics</groupId>
-            <artifactId>microprofile-metrics-api</artifactId>
-            <version>1.0</version>
-            <scope>provided</scope>
-        </dependency>
+	<!-- The MicroProfile 1.2 specs that this project is providing samples for. 
+		Each spec is represented by one module. "test-utils" is a helper module. -->
+	<modules>
+		<module>config</module>
+		<module>fault-tolerance</module>
+		<module>jwt-auth</module>
+		<module>metrics</module>
+		<module>test-utils</module>
+	</modules>
 
-        <!-- Test dependencies which can be used in sub-modules -->
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>
-            <version>1.3</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-            <version>1.3</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.arquillian.junit</groupId>
-            <artifactId>arquillian-junit-container</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.arquillian.protocol</groupId>
-            <artifactId>arquillian-protocol-servlet</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.shrinkwrap.resolver</groupId>
-            <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
-            <scope>test</scope>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.shrinkwrap.resolver</groupId>
-            <artifactId>shrinkwrap-resolver-impl-maven-archive</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>xmlunit</groupId>
-            <artifactId>xmlunit</artifactId>
-            <version>1.6</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.skyscreamer</groupId>
-            <artifactId>jsonassert</artifactId>
-            <version>1.5.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.sourceforge.htmlunit</groupId>
-            <artifactId>htmlunit</artifactId>
-            <version>2.29</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>rhino</groupId>
-            <artifactId>js</artifactId>
-            <version>1.7R2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20180130</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.jayway.awaitility</groupId>
-            <artifactId>awaitility</artifactId>
-            <version>1.7.0</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jboss.arquillian</groupId>
+				<artifactId>arquillian-bom</artifactId>
+				<version>1.4.0.Final</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.arquillian.container</groupId>
+				<artifactId>arquillian-container-test-api</artifactId>
+				<version>1.4.0.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<version>1.4.197</version>
+			</dependency>
+			<dependency>
+				<groupId>fish.payara.arquillian</groupId>
+				<artifactId>payara-client-ee7</artifactId>
+				<version>1.0.Beta3-m3</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 
-    <build>
-        <finalName>${project.artifactId}</finalName>
+	<dependencies>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
 
-        <testResources>
-            <testResource>
-                <directory>src/test/resources</directory>
-                <filtering>true</filtering>
-            </testResource>
-        </testResources>
+		<dependency>
+			<groupId>org.eclipse.microprofile.config</groupId>
+			<artifactId>microprofile-config-api</artifactId>
+			<version>1.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.microprofile.fault-tolerance</groupId>
+			<artifactId>microprofile-fault-tolerance-api</artifactId>
+			<version>1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.microprofile.jwt</groupId>
+			<artifactId>microprofile-jwt-auth-api</artifactId>
+			<version>1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.microprofile.metrics</groupId>
+			<artifactId>microprofile-metrics-api</artifactId>
+			<version>1.0</version>
+			<scope>provided</scope>
+		</dependency>
 
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
-                <configuration>
-                    <source>${java.min.version}</source>
-                    <target>${java.min.version}</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.20.1</version>
-                <configuration>
-                    <aggregate>true</aggregate>
-                    <linkXRef>true</linkXRef>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.20.1</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>javax.annotation</groupId>
-                        <artifactId>javax.annotation-api</artifactId>
-                        <version>1.3.1</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.2.0</version>
-                <configuration>
-                    <attachClasses>true</attachClasses>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.0.0-M1</version>
-                <configuration>
-                    <rules>
-                        <requireMavenVersion>
-                            <message>At least Maven in version
-                                ${maven.min.version} is
-                                required.</message>
-                            <version>${maven.min.version}</version>
-                        </requireMavenVersion>
-                        <requireJavaVersion>
-                            <message>At least a JDK in version
-                                ${java.min.version} is
-                                required.</message>
-                            <version>${java.min.version}</version>
-                        </requireJavaVersion>
-                    </rules>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.0.2</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.0.2</version>
-            </plugin>
-            <plugin>
-                <groupId>org.wildfly.plugins</groupId>
-                <artifactId>wildfly-maven-plugin</artifactId>
-                <version>1.0.2.Final</version>
-            </plugin>
-        </plugins>
-    </build>
+		<!-- Test dependencies which can be used in sub-modules -->
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>1.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-library</artifactId>
+			<version>1.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.protocol</groupId>
+			<artifactId>arquillian-protocol-servlet</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.shrinkwrap.resolver</groupId>
+			<artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+			<scope>test</scope>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.shrinkwrap.resolver</groupId>
+			<artifactId>shrinkwrap-resolver-impl-maven-archive</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>xmlunit</groupId>
+			<artifactId>xmlunit</artifactId>
+			<version>1.6</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.skyscreamer</groupId>
+			<artifactId>jsonassert</artifactId>
+			<version>1.5.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit</artifactId>
+			<version>2.30</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>rhino</groupId>
+			<artifactId>js</artifactId>
+			<version>1.7R2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20180130</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.jayway.awaitility</groupId>
+			<artifactId>awaitility</artifactId>
+			<version>1.7.0</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>${java.min.version}</source>
+					<target>${java.min.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.21.0</version>
+				<configuration>
+					<aggregate>true</aggregate>
+					<linkXRef>true</linkXRef>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.21.0</version>
+				<dependencies>
+					<dependency>
+						<groupId>javax.annotation</groupId>
+						<artifactId>javax.annotation-api</artifactId>
+						<version>1.3.2</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.0</version>
+				<configuration>
+					<attachClasses>true</attachClasses>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>3.0.0-M1</version>
+				<configuration>
+					<rules>
+						<requireMavenVersion>
+							<message>At least Maven in version
+								${maven.min.version} is
+								required.</message>
+							<version>${maven.min.version}</version>
+						</requireMavenVersion>
+						<requireJavaVersion>
+							<message>At least a JDK in version
+								${java.min.version} is
+								required.</message>
+							<version>${java.min.version}</version>
+						</requireJavaVersion>
+					</rules>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.1.0</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.2.1.Final</version>
+			</plugin>
+		</plugins>
+	</build>
 
 
 
-    <!-- Profiles for the application servers against which the samples are run -->
+	<!-- Profiles for the application servers against which the samples are 
+		run -->
 
 
-    <profiles>
+	<profiles>
 
-        <!-- ### PAYARA ### -->
+		<!-- ### PAYARA ### -->
 
 
-        <profile>
-            <id>payara-ci-managed</id>
+		<profile>
+			<id>payara-ci-managed</id>
 
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 
 			<dependencies>
 				<dependency>
 					<groupId>fish.payara.arquillian</groupId>
 					<artifactId>payara-client-ee7</artifactId>
 				</dependency>
-		
+
 				<!-- The actual Arquillian connector -->
 				<dependency>
 					<groupId>fish.payara.arquillian</groupId>
@@ -370,419 +376,406 @@
 				</dependency>
 			</dependencies>
 
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>unpack</id>
-                                <phase>process-test-classes</phase>
-                                <goals>
-                                    <goal>unpack</goal>
-                                </goals>
-                                <configuration>
-                                    <outputDirectory>${session.executionRootDirectory}/target</outputDirectory>
-                                    <markersDirectory>${session.executionRootDirectory}/target/dependency-maven-plugin-markers</markersDirectory>
-                                    <artifactItems>
-                                        <artifactItem>
-                                            <groupId>fish.payara.distributions</groupId>
-                                            <artifactId>payara-web</artifactId>
-                                            <version>${payara.version}</version>
-                                            <type>zip</type>
-                                            <overWrite>false</overWrite>
-                                            <outputDirectory>${session.executionRootDirectory}/target</outputDirectory>
-                                        </artifactItem>
-                                    </artifactItems>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <dependencies>
-                                <dependency>
-                                    <groupId>javax.annotation</groupId>
-                                    <artifactId>javax.annotation-api</artifactId>
-                                    <version>1.3.1</version>
-                                </dependency>
-                            </dependencies>
-                            <environmentVariables>
-                                <GLASSFISH_HOME>${session.executionRootDirectory}/target/payara5</GLASSFISH_HOME>
-                            </environmentVariables>
-                            <!-- This needs tuning -->
-                            <systemPropertyVariables>
-                                <glassfishRemote_gfHome>${session.executionRootDirectory}/target/payara5</glassfishRemote_gfHome>
-                                <javaEEServer>payara-remote</javaEEServer>
-                                <arquillian.launch>payara</arquillian.launch>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        
-        <profile>
-            <id>payara-micro-managed</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>unpack</id>
+								<phase>process-test-classes</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${session.executionRootDirectory}/target</outputDirectory>
+									<markersDirectory>${session.executionRootDirectory}/target/dependency-maven-plugin-markers</markersDirectory>
+									<artifactItems>
+										<artifactItem>
+											<groupId>fish.payara.distributions</groupId>
+											<artifactId>payara-web</artifactId>
+											<version>${payara.version}</version>
+											<type>zip</type>
+											<overWrite>false</overWrite>
+											<outputDirectory>${session.executionRootDirectory}/target</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<dependencies>
+								<dependency>
+									<groupId>javax.annotation</groupId>
+									<artifactId>javax.annotation-api</artifactId>
+									<version>1.3.1</version>
+								</dependency>
+							</dependencies>
+							<environmentVariables>
+								<GLASSFISH_HOME>${session.executionRootDirectory}/target/payara5</GLASSFISH_HOME>
+							</environmentVariables>
+							<!-- This needs tuning -->
+							<systemPropertyVariables>
+								<glassfishRemote_gfHome>${session.executionRootDirectory}/target/payara5</glassfishRemote_gfHome>
+								<javaEEServer>payara-remote</javaEEServer>
+								<arquillian.launch>payara</arquillian.launch>
+							</systemPropertyVariables>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
-            <properties>
-                <skipJMS>true</skipJMS>
-                <skipJAXWS>true</skipJAXWS>
-            </properties>
+		<profile>
+			<id>payara-micro-managed</id>
 
-            <dependencies>
-                <!-- Java EE based client dependencies to contact a server via WebSocket or REST -->
-                <dependency>
-                    <groupId>fish.payara.arquillian</groupId>
-                    <artifactId>payara-client-ee7</artifactId>
-                </dependency>
-            
-                <!-- The Arquillian connector -->
-                <dependency>
-                    <groupId>fish.payara.arquillian</groupId>
-                    <artifactId>arquillian-payara-micro-5-managed</artifactId> 
-                    <version>${payara.container.version}</version> 
-                    <scope>test</scope>
-                </dependency>
-            </dependencies>
+			<properties>
+				<skipJMS>true</skipJMS>
+				<skipJAXWS>true</skipJAXWS>
+			</properties>
 
-            <build>
-                <plugins>
-                    <!-- Download Payara Micro and copy to target directory -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>process-test-classes</phase>
-                                <goals>
-                                    <goal>copy</goal>
-                                </goals>
-                                <configuration>
-                                    <artifactItems>
-                                        <artifactItem>
-                                            <groupId>fish.payara.extras</groupId>
-                                            <artifactId>payara-micro</artifactId>
-                                            <version>${payara.micro.version}</version>
-                                            <overWrite>false</overWrite>
-                                            <outputDirectory>${session.executionRootDirectory}/target/</outputDirectory>
-                                            <destFileName>payara-micro-${payara.micro.version}.jar</destFileName>
-                                        </artifactItem>
-                                    </artifactItems>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <!-- Configure Payara Micro Runtime -->
-                    <plugin>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <environmentVariables>
-                                <MICRO_JAR>${session.executionRootDirectory}/target/payara-micro-${payara.micro.version}.jar</MICRO_JAR>
-                            </environmentVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-       
-        <profile>
-            <id>payara-remote</id>
-            
-            <dependencies>
-                <dependency>
-                    <groupId>fish.payara.arquillian</groupId>
-                    <artifactId>payara-client-ee7</artifactId>
-                </dependency>
+			<dependencies>
+				<!-- Java EE based client dependencies to contact a server via WebSocket 
+					or REST -->
+				<dependency>
+					<groupId>fish.payara.arquillian</groupId>
+					<artifactId>payara-client-ee7</artifactId>
+				</dependency>
 
-                <!-- The actual Arquillian connector -->
-                <dependency>
-                    <groupId>fish.payara.arquillian</groupId>
-                    <artifactId>arquillian-payara-server-4-remote</artifactId>
-                    <version>${payara.container.version}</version>
-                    <scope>test</scope>
-                </dependency>
-            </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <javaEEServer>payara-remote</javaEEServer>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
+				<!-- The Arquillian connector -->
+				<dependency>
+					<groupId>fish.payara.arquillian</groupId>
+					<artifactId>arquillian-payara-micro-5-managed</artifactId>
+					<version>${payara.container.version}</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+
+			<build>
+				<plugins>
+					<!-- Download Payara Micro and copy to target directory -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>process-test-classes</phase>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>fish.payara.extras</groupId>
+											<artifactId>payara-micro</artifactId>
+											<version>${payara.micro.version}</version>
+											<overWrite>false</overWrite>
+											<outputDirectory>${session.executionRootDirectory}/target/</outputDirectory>
+											<destFileName>payara-micro-${payara.micro.version}.jar</destFileName>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<!-- Configure Payara Micro Runtime -->
+					<plugin>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<environmentVariables>
+								<MICRO_JAR>${session.executionRootDirectory}/target/payara-micro-${payara.micro.version}.jar</MICRO_JAR>
+							</environmentVariables>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>payara-remote</id>
+
+			<dependencies>
+				<dependency>
+					<groupId>fish.payara.arquillian</groupId>
+					<artifactId>payara-client-ee7</artifactId>
+				</dependency>
+
+				<!-- The actual Arquillian connector -->
+				<dependency>
+					<groupId>fish.payara.arquillian</groupId>
+					<artifactId>arquillian-payara-server-4-remote</artifactId>
+					<version>${payara.container.version}</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<systemPropertyVariables>
+								<javaEEServer>payara-remote</javaEEServer>
+							</systemPropertyVariables>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
 
 
-        <!-- ### LIBERTY ### -->
+		<!-- ### LIBERTY ### -->
 
-        <profile>
-            <id>liberty-ci-managed</id>
+		<profile>
+			<id>liberty-ci-managed</id>
 
-            <dependencies>
-                <dependency>
-                    <groupId>fish.payara.arquillian</groupId>
-                    <artifactId>payara-client-ee7</artifactId>
-                </dependency>
-            
-                <dependency>
-                    <groupId>org.jboss.arquillian.container</groupId>
-                    <artifactId>arquillian-wlp-managed-8.5</artifactId>
-                    <version>1.0.0.CR1</version>
-                    <scope>test</scope>
-                </dependency>
-            </dependencies>
+			<dependencies>
+				<dependency>
+					<groupId>fish.payara.arquillian</groupId>
+					<artifactId>payara-client-ee7</artifactId>
+				</dependency>
 
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>unpack</id>
-                                <phase>test-compile</phase>
-                                <goals>
-                                    <goal>unpack</goal>
-                                </goals>
-                                <configuration>
-                                    <artifactItems>
-                                        <artifactItem>
-                                            <!-- Open Liberty -->
-                                            <groupId>io.openliberty</groupId>
-                                            <artifactId>openliberty-runtime</artifactId>
-                                            <version>${liberty.version}</version>
-                                            
-                                            <!-- Closed Liberty -->
-                                            <!--  
-                                            <groupId>com.ibm.websphere.appserver.runtime</groupId>
-                                            <artifactId>wlp-microProfile1</artifactId>
-                                            <version>${liberty.version}</version>-->
-                                            <type>zip</type>
-                                            <overWrite>false</overWrite>
-                                            <outputDirectory>${session.executionRootDirectory}/target/</outputDirectory>
-                                        </artifactItem>
-                                    </artifactItems>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <version>1.1</version>
-                        <executions>
-                            <execution>
-                                <id>unpack</id>
-                                <phase>process-test-classes</phase>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                                <configuration>
-                                    <tasks>
-                                        <!-- TODO: There has to be a better way. Look at
-                                             PR for Liberty arquillian container to modify server.xml?
-                                         -->
-                                        <echo>Copying server.xml</echo>
-                                        <copy
-                                            failonerror="false"
-                                            file="../../test-utils/src/main/resources/server.xml"
-                                            tofile="${session.executionRootDirectory}/target/wlp/templates/servers/defaultServer/server.xml"
-                                        />
-                                        <echo>Copying key.jks</echo>
-                                        <mkdir dir="${session.executionRootDirectory}/target/wlp/templates/servers/defaultServer/resources/security/" />
-                                        <copy
-                                            failonerror="false"
-                                            file="../../test-utils/src/main/resources/key.jks"
-                                            tofile="${session.executionRootDirectory}/target/wlp/templates/servers/defaultServer/resources/security/key.jks"
-                                        />
-                                    </tasks>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <arquillian.launch>liberty-ci-managed</arquillian.launch>
-                                <!--  
-                                <arquillian.launch>liberty-ci-managed-debug</arquillian.launch>
-                                -->
-                                <arquillian.liberty.wlpHome>${session.executionRootDirectory}/target/wlp</arquillian.liberty.wlpHome>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        
-        
-        
-        <!-- ### WildFly ### -->
-        
-        <profile>
-            <id>wildfly-ci-managed</id>
-            
-            <!-- 
-                WildFly is very sensitive for the exact Arquillian version used.
-                If the version is not right, the Swarm connector will create 2 deployments
-                per test, which fails.
-            
-             -->
-            <dependencyManagement>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.jboss.arquillian</groupId>
-                        <artifactId>arquillian-bom</artifactId>
-                        <version>1.2.1.Final</version>
-                        <scope>import</scope>
-                        <type>pom</type>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.jboss.arquillian.container</groupId>
-                        <artifactId>arquillian-container-test-api</artifactId>
-                        <version>1.2.1.Final</version>
-                    </dependency>
-                </dependencies>
-            </dependencyManagement>
+				<dependency>
+					<groupId>org.jboss.arquillian.container</groupId>
+					<artifactId>arquillian-wlp-managed-8.5</artifactId>
+					<version>1.0.0.CR1</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
 
-            <dependencies>
-                <!-- Needed for websocket tests that use ContainerProvider.getWebSocketContainer()
-                     to connect from a the client to the websocket server.
-                -->
-                <dependency>
-                    <groupId>io.undertow</groupId>
-                    <artifactId>undertow-websockets-jsr</artifactId>
-                    <version>1.4.0.Final</version>
-                    <scope>test</scope>
-                </dependency>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>unpack</id>
+								<phase>test-compile</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<!-- Open Liberty -->
+											<groupId>io.openliberty</groupId>
+											<artifactId>openliberty-runtime</artifactId>
+											<version>${liberty.version}</version>
 
-                <!-- Needed for jaxrs tests that use ClientBuilder to connect from a client
-                     to the JAX-RS server.
-                -->
-                <dependency>
-                    <groupId>org.jboss.resteasy</groupId>
-                    <artifactId>resteasy-client</artifactId>
-                    <version>3.0.19.Final</version>
-                    <scope>test</scope>
-                </dependency>
+											<!-- Closed Liberty -->
+											<!-- <groupId>com.ibm.websphere.appserver.runtime</groupId> <artifactId>wlp-microProfile1</artifactId> 
+												<version>${liberty.version}</version> -->
+											<type>zip</type>
+											<overWrite>false</overWrite>
+											<outputDirectory>${session.executionRootDirectory}/target/</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.8</version>
+						<executions>
+							<execution>
+								<id>unpack</id>
+								<phase>process-test-classes</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<!-- TODO: There has to be a better way. Look at PR for Liberty 
+											arquillian container to modify server.xml? -->
+										<echo>Copying server.xml</echo>
+										<copy failonerror="false"
+											file="../../test-utils/src/main/resources/server.xml"
+											tofile="${session.executionRootDirectory}/target/wlp/templates/servers/defaultServer/server.xml" />
+										<echo>Copying key.jks</echo>
+										<mkdir
+											dir="${session.executionRootDirectory}/target/wlp/templates/servers/defaultServer/resources/security/" />
+										<copy failonerror="false"
+											file="../../test-utils/src/main/resources/key.jks"
+											tofile="${session.executionRootDirectory}/target/wlp/templates/servers/defaultServer/resources/security/key.jks" />
+									</tasks>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<systemPropertyVariables>
+								<arquillian.launch>liberty-ci-managed</arquillian.launch>
+								<!-- <arquillian.launch>liberty-ci-managed-debug</arquillian.launch> -->
+								<arquillian.liberty.wlpHome>${session.executionRootDirectory}/target/wlp</arquillian.liberty.wlpHome>
+							</systemPropertyVariables>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
-                <!-- Without this exception will be thrown about missing tracef method -->
-                <dependency>
-                    <groupId>org.jboss.logging</groupId>
-                    <artifactId>jboss-logging</artifactId>
-                    <version>3.3.0.Final</version>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.resteasy</groupId>
-                    <artifactId>resteasy-jaxb-provider</artifactId>
-                    <version>3.0.19.Final</version>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.resteasy</groupId>
-                    <artifactId>resteasy-json-p-provider</artifactId>
-                    <version>3.0.19.Final</version>
-                    <scope>test</scope>
-                </dependency>
 
-                <!-- The actual Arquillian container, which also takes care of downloading the server bits -->
-                <dependency>
-                    <groupId>org.wildfly.swarm</groupId>
-                    <artifactId>arquillian</artifactId>
-                    <version>${wildfly.version}</version>
-                    <scope>test</scope>
-                </dependency>
-                
-                <dependency>
-                    <groupId>org.wildfly.swarm</groupId>
-                    <artifactId>microprofile</artifactId>
-                    <version>${wildfly.version}</version>
-                </dependency>
-            </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <!-- Uncomment to debug -->
-                                <!-- 
-                                <swarm.debug.port>5005</swarm.debug.port>
-                                 -->
-                                <arquillian.xml>arquillian-swarm.xml</arquillian.xml>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        
-        
 
-        <profile>
-            <id>nothing</id>
-        </profile>
+		<!-- ### WildFly ### -->
 
-        <!-- Activate this profile to download javadoc and sources jars. 
-            run: mvn process-resources -Ddownload Notice: This feature has been removed 
-            with plugin version 2.5, so keep this plugin configuration in a profile section. -->
-        <profile>
-            <id>javadocs</id>
-            <activation>
-                <property>
-                    <name>javadocs</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <version>2.4</version>
-                        <executions>
-                            <execution>
-                                <id>sources</id>
-                                <phase>process-resources</phase>
-                                <goals>
-                                    <goal>sources</goal>
-                                    <goal>resolve</goal>
-                                </goals>
-                                <configuration>
-                                    <classifier>javadoc</classifier>
-                                    <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+		<profile>
+			<id>wildfly-ci-managed</id>
 
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.19.1</version>
-                <configuration>
-                    <aggregate>true</aggregate>
-                    <linkXRef>true</linkXRef>
-                </configuration>
-            </plugin>
-        </plugins>
-    </reporting>
+			<!-- WildFly is very sensitive for the exact Arquillian version used. 
+				If the version is not right, the Swarm connector will create 2 deployments 
+				per test, which fails. -->
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+						<groupId>org.jboss.arquillian</groupId>
+						<artifactId>arquillian-bom</artifactId>
+						<version>1.2.1.Final</version>
+						<scope>import</scope>
+						<type>pom</type>
+					</dependency>
+					<dependency>
+						<groupId>org.jboss.arquillian.container</groupId>
+						<artifactId>arquillian-container-test-api</artifactId>
+						<version>1.2.1.Final</version>
+					</dependency>
+				</dependencies>
+			</dependencyManagement>
+
+			<dependencies>
+				<!-- Needed for websocket tests that use ContainerProvider.getWebSocketContainer() 
+					to connect from a the client to the websocket server. -->
+				<dependency>
+					<groupId>io.undertow</groupId>
+					<artifactId>undertow-websockets-jsr</artifactId>
+					<version>2.0.4.Final</version>
+					<scope>test</scope>
+				</dependency>
+
+				<!-- Needed for jaxrs tests that use ClientBuilder to connect from a 
+					client to the JAX-RS server. -->
+				<dependency>
+					<groupId>org.jboss.resteasy</groupId>
+					<artifactId>resteasy-client</artifactId>
+					<version>3.0.19.Final</version>
+					<scope>test</scope>
+				</dependency>
+
+				<!-- Without this exception will be thrown about missing tracef method -->
+				<dependency>
+					<groupId>org.jboss.logging</groupId>
+					<artifactId>jboss-logging</artifactId>
+					<version>3.3.2.Final</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.jboss.resteasy</groupId>
+					<artifactId>resteasy-jaxb-provider</artifactId>
+					<version>3.0.19.Final</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.jboss.resteasy</groupId>
+					<artifactId>resteasy-json-p-provider</artifactId>
+					<version>3.0.19.Final</version>
+					<scope>test</scope>
+				</dependency>
+
+				<!-- The actual Arquillian container, which also takes care of downloading 
+					the server bits -->
+				<dependency>
+					<groupId>org.wildfly.swarm</groupId>
+					<artifactId>arquillian</artifactId>
+					<version>${wildfly.version}</version>
+					<scope>test</scope>
+				</dependency>
+
+				<dependency>
+					<groupId>org.wildfly.swarm</groupId>
+					<artifactId>microprofile</artifactId>
+					<version>${wildfly.version}</version>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<systemPropertyVariables>
+								<!-- Uncomment to debug -->
+								<!-- <swarm.debug.port>5005</swarm.debug.port> -->
+								<arquillian.xml>arquillian-swarm.xml</arquillian.xml>
+							</systemPropertyVariables>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+
+
+		<profile>
+			<id>nothing</id>
+		</profile>
+
+		<!-- Activate this profile to download javadoc and sources jars. run: mvn 
+			process-resources -Ddownload Notice: This feature has been removed with plugin 
+			version 2.5, so keep this plugin configuration in a profile section. -->
+		<profile>
+			<id>javadocs</id>
+			<activation>
+				<property>
+					<name>javadocs</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<version>2.4</version>
+						<executions>
+							<execution>
+								<id>sources</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>sources</goal>
+									<goal>resolve</goal>
+								</goals>
+								<configuration>
+									<classifier>javadoc</classifier>
+									<failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.19.1</version>
+				<configuration>
+					<aggregate>true</aggregate>
+					<linkXRef>true</linkXRef>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 
 </project>
