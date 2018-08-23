@@ -3,6 +3,8 @@
  - [Wiki project page](https://wiki.eclipse.org/MicroProfile/JWT_Auth)
  - [Spec, API, TCK GitHub repo](https://github.com/eclipse/microprofile-jwt-auth)
 
+**Note** for practical purposes these samples have been superseded by the ones at https://github.com/javaee-samples/microprofile1.4-samples/tree/master/jwt-auth
+
 ## Samples ##
 
  - **basic-authentication** The test sends a very basic signed JWT token to a protected servlet. The MP-JWT Auth implementation
