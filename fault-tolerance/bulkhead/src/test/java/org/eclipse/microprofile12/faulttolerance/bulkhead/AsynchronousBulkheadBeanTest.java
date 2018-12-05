@@ -33,7 +33,8 @@ public class AsynchronousBulkheadBeanTest {
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
                     .addClasses(AsynchronousBulkheadBean.class)
-                    .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+                    .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
+                    .addAsResource("project-defaults.yml");
     }
     
     /**
@@ -104,8 +105,12 @@ public class AsynchronousBulkheadBeanTest {
                 Logger.getLogger(AsynchronousBulkheadBeanTest.class.getName()).log(Level.SEVERE, null, ie);
                 Assert.fail("Got an unexpected InterruptedException");
             } catch (ExecutionException ex) {
-                Logger.getLogger(AsynchronousBulkheadBeanTest.class.getName()).log(Level.SEVERE, null, ex);
-                Assert.fail("Got an unexpected ExecutionException");
+                if (ex.getCause() instanceof BulkheadException) {
+                    failures ++;
+                } else {
+                    Logger.getLogger(AsynchronousBulkheadBeanTest.class.getName()).log(Level.SEVERE, null, ex);
+                    Assert.fail("Got an unexpected ExecutionException");
+                }
             } catch (BulkheadException be) {
                 failures ++;
             }

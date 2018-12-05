@@ -4,9 +4,11 @@ swarm:
   bind:
     address: localhost
   microprofile:
-    jwtauth:
+    jwt:
+      default-missing-method-permissions-deny-access: false
       token:
-        issuedBy: "org.eclipse.microprofile12"
+        issued-by: "org.eclipse.microprofile12"
+        signer-pub-key: classpath:publicKey.pem
   logging:
     loggers:
       io.undertow.request.security:

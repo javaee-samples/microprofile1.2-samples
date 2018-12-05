@@ -116,7 +116,7 @@ public class ClassLevelCircuitBreakerBeanTest {
             boolean shouldThrowException) {
         List<Future<String>> futures = new ArrayList<>();
         
-        ExecutorService executorService = Executors.newFixedThreadPool(iterations);
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
         
         Callable<String> task = () -> { 
             classLevelCircuitBreakerBean.throwException(shouldThrowException);

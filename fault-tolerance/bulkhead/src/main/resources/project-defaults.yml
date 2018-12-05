@@ -1,0 +1,12 @@
+swarm:
+  hystrix:
+    threadpool:
+      default:
+        maximumSize: 10 #SHOULD BE >= AsynchronousBulkheadBean @Bulkead value + @Bulkhead waitingTaskQueue
+        allowMaximumSizeToDivergeFromCoreSize: true
+    command:
+      default:
+        execution:
+          isolation:
+            thread:
+              timeoutInMilliseconds: 21500 #MORE THAN (AsynchronousBulkheadBean @Bulkead value + @Bulkhead waitingTaskQueue -1) * AsynchronousBulkheadBean.AWAIT

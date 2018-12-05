@@ -8,10 +8,10 @@
       - but arquillian.xml sets the default protocol to "Servlet 3.0" and there's no way to override that
       - (see https://issues.jboss.org/browse/ARQ-579)
       -->
-    <container qualifier="wildfly-swarm" default="true">
+    <container qualifier="thorntail" default="true">
         <configuration>
             <property name="host">localhost</property>
-            <property name="port">${swarm.arquillian.daemon.port:12345}</property>
+            <property name="port">${thorntail.arquillian.daemon.port:12345}</property>
         </configuration>
     </container>
 

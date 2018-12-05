@@ -44,15 +44,12 @@ public class JaxRsTest {
                     // Payara Properties file configuring that "org.eclipse.microprofile12" is the valid issuer
                     "payara-mp-jwt.properties"
                 ).addAsResource(
-                    // WildFly file configuring that "org.eclipse.microprofile12" is the valid issuer and setting up
+                    // Thorntail file configuring that "org.eclipse.microprofile12" is the valid issuer and setting up
                     // the security system (domain) such that all artifacts to support MP-Auth JWT are installed
                     "project-defaults.yml"
                 ).addAsResource(
-                    // Payara public key to verify the incoming signed JWT's signature 
+                    // Payara/Thorntail public key to verify the incoming signed JWT's signature 
                     "publicKey.pem"
-                ).addAsResource(
-                     // WildFly public key to verify the incoming signed JWT's signature 
-                     "META-INF/MP-JWT-SIGNER"
                 ).addAsResource(
                      // WildFly public key to verify the incoming signed JWT's signature 
                      "jwt-roles.properties"

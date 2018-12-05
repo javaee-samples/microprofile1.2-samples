@@ -1,0 +1,8 @@
+swarm:
+  hystrix:
+    command:
+      default:
+        execution:
+          isolation:
+            thread:
+              timeoutInMilliseconds: 3500 #MORE THAN AsynchronousTimeoutBean.AWAIT CONFIGURED IN TESTS

@@ -36,7 +36,8 @@ public class AsyncClassBeanTest {
         return create(WebArchive.class)
                     .addAsLibraries(awaitability())
                     .addClasses(MyAsyncBeanClassLevel.class)
-                    .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+                    .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
+                    .addAsResource("project-defaults.yml");
     }
 
     @Test
