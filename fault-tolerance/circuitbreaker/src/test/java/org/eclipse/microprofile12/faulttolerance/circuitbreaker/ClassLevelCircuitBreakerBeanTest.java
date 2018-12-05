@@ -75,7 +75,8 @@ public class ClassLevelCircuitBreakerBeanTest {
         int numberOfTasks = ((Double) (
                 ClassLevelCircuitBreakerBean.class.getAnnotation(CircuitBreaker.class).requestVolumeThreshold() 
                 * ClassLevelCircuitBreakerBean.class.getAnnotation(CircuitBreaker.class).failureRatio()))
-                .intValue() + numberOfExpectedFailures;
+                .intValue() + numberOfExpectedFailures 
+                + 1; //We need one more after circuit opens to start getting expected number of failures
         
         // Throw errors to to open the circuit
         List<Future<String>> futures = executeThrowExceptionMethodAsynchronously(numberOfTasks, true);
@@ -116,7 +117,7 @@ public class ClassLevelCircuitBreakerBeanTest {
             boolean shouldThrowException) {
         List<Future<String>> futures = new ArrayList<>();
         
-        ExecutorService executorService = Executors.newFixedThreadPool(iterations);
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
         
         Callable<String> task = () -> { 
             classLevelCircuitBreakerBean.throwException(shouldThrowException);

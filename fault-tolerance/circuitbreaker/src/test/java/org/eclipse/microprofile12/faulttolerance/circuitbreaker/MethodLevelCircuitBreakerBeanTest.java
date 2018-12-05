@@ -82,7 +82,8 @@ public class MethodLevelCircuitBreakerBeanTest {
                         .getAnnotation(CircuitBreaker.class).requestVolumeThreshold() 
                 * MethodLevelCircuitBreakerBean.class.getMethod("throwException", boolean.class)
                         .getAnnotation(CircuitBreaker.class).failureRatio()))
-                .intValue() + numberOfExpectedFailures;
+                .intValue() + numberOfExpectedFailures
+                + 1; //We need one more after circuit opens to start getting expected number of failures
         
         // Force the method to throw errors to open the circuit
         List<Future<String>> futures = executeThrowExceptionMethodAsynchronously(numberOfTasks, true);
@@ -141,7 +142,7 @@ public class MethodLevelCircuitBreakerBeanTest {
             boolean shouldThrowException) {
         List<Future<String>> futures = new ArrayList<>();
         
-        ExecutorService executorService = Executors.newFixedThreadPool(iterations);
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
         
         Callable<String> task = () -> { 
             methodLevelCircuitBreakerBean.throwException(shouldThrowException);

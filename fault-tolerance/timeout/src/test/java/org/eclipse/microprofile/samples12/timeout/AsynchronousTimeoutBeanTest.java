@@ -3,6 +3,7 @@ package org.eclipse.microprofile.samples12.timeout;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import javax.inject.Inject;
+
 import org.eclipse.microprofile.faulttolerance.exceptions.TimeoutException;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -27,7 +28,8 @@ public class AsynchronousTimeoutBeanTest {
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
                     .addClasses(AsynchronousTimeoutBean.class)
-                    .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+                    .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
+                    .addAsResource("project-defaults.yml");
     }
     
     /**
@@ -43,6 +45,10 @@ public class AsynchronousTimeoutBeanTest {
             future.get();
         } catch (TimeoutException toe) {
             return;
+        } catch (ExecutionException ex) {
+            if (ex.getCause() instanceof TimeoutException) {
+                return;
+            }
         }
         
         Assert.fail();

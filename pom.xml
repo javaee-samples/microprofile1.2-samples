@@ -35,7 +35,7 @@
 		<payara.version>5.182-SNAPSHOT</payara.version>
 		<payara.micro.version>5.182-SNAPSHOT</payara.micro.version>
 		<liberty.version>17.0.0.4</liberty.version>
-		<wildfly.version>2018.4.1</wildfly.version>
+		<thorntail.version>2.3.0.Final-SNAPSHOT</thorntail.version>
 
 		<payara.container.version>1.0.Beta3</payara.container.version>
 		<payara.micro.container.version>5.Beta3-m3</payara.micro.container.version>
@@ -627,10 +627,10 @@
 
 
 
-		<!-- ### WildFly ### -->
+		<!-- ### Thorntail ### -->
 
 		<profile>
-			<id>wildfly-ci-managed</id>
+			<id>thorntail</id>
 
 			<!-- WildFly is very sensitive for the exact Arquillian version used. 
 				If the version is not right, the Swarm connector will create 2 deployments 
@@ -638,74 +638,37 @@
 			<dependencyManagement>
 				<dependencies>
 					<dependency>
+						<groupId>io.thorntail</groupId>
+						<artifactId>bom</artifactId>
+						<version>${thorntail.version}</version>
+						<scope>import</scope>
+						<type>pom</type>
+					</dependency>
+					<dependency>
 						<groupId>org.jboss.arquillian</groupId>
 						<artifactId>arquillian-bom</artifactId>
 						<version>1.2.1.Final</version>
 						<scope>import</scope>
 						<type>pom</type>
 					</dependency>
-					<dependency>
-						<groupId>org.jboss.arquillian.container</groupId>
-						<artifactId>arquillian-container-test-api</artifactId>
-						<version>1.2.1.Final</version>
-					</dependency>
 				</dependencies>
 			</dependencyManagement>
 
 			<dependencies>
-				<!-- Needed for websocket tests that use ContainerProvider.getWebSocketContainer() 
-					to connect from a the client to the websocket server. -->
-				<dependency>
-					<groupId>io.undertow</groupId>
-					<artifactId>undertow-websockets-jsr</artifactId>
-					<version>2.0.4.Final</version>
-					<scope>test</scope>
-				</dependency>
-
-				<!-- Needed for jaxrs tests that use ClientBuilder to connect from a 
-					client to the JAX-RS server. -->
-				<dependency>
-					<groupId>org.jboss.resteasy</groupId>
-					<artifactId>resteasy-client</artifactId>
-					<version>3.0.19.Final</version>
-					<scope>test</scope>
-				</dependency>
-
-				<!-- Without this exception will be thrown about missing tracef method -->
-				<dependency>
-					<groupId>org.jboss.logging</groupId>
-					<artifactId>jboss-logging</artifactId>
-					<version>3.3.2.Final</version>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.jboss.resteasy</groupId>
-					<artifactId>resteasy-jaxb-provider</artifactId>
-					<version>3.0.19.Final</version>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.jboss.resteasy</groupId>
-					<artifactId>resteasy-json-p-provider</artifactId>
-					<version>3.0.19.Final</version>
-					<scope>test</scope>
-				</dependency>
 
 				<!-- The actual Arquillian container, which also takes care of downloading 
 					the server bits -->
 				<dependency>
-					<groupId>org.wildfly.swarm</groupId>
+					<groupId>io.thorntail</groupId>
 					<artifactId>arquillian</artifactId>
-					<version>${wildfly.version}</version>
 					<scope>test</scope>
 				</dependency>
-
 				<dependency>
-					<groupId>org.wildfly.swarm</groupId>
+					<groupId>io.thorntail</groupId>
 					<artifactId>microprofile</artifactId>
-					<version>${wildfly.version}</version>
 				</dependency>
 			</dependencies>
+
 			<build>
 				<plugins>
 					<plugin>
@@ -713,16 +676,14 @@
 						<configuration>
 							<systemPropertyVariables>
 								<!-- Uncomment to debug -->
-								<!-- <swarm.debug.port>5005</swarm.debug.port> -->
-								<arquillian.xml>arquillian-swarm.xml</arquillian.xml>
+								<!--<thorntail.debug.port>8000</thorntail.debug.port>-->
+								<arquillian.xml>arquillian-thorntail.xml</arquillian.xml>
 							</systemPropertyVariables>
 						</configuration>
 					</plugin>
 				</plugins>
 			</build>
 		</profile>
-
-
 
 		<profile>
 			<id>nothing</id>

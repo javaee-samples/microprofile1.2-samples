@@ -38,12 +38,12 @@ These are the available container profiles:
       This profile uses the special "wlp-microProfile1" distribution of Liberty, which contains the MicroProfile APIs out of the box
       and start up the server per sample. 
       Useful for CI servers. The Liberty version that's used can be set via the ``liberty.version`` property.
- * WildFly      
-   * ``wildfly-ci-managed``
+ * Thorntail      
+   * ``thorntail``
 
-      This profile is based on WildFly Swarm, and includes the MicroProfile 1.2 fragment. The actual WildFly Swarm code and thus
+      This profile is based on Thorntail, and includes the MicroProfile 1.2 fragment. The actual Thorntail code and thus
       the WildFly code is handled internally by the Arquillian connector. 
-      Useful for CI servers. The WildFly Swarm version that's used can be set via the ``wildfly.version`` property.
+      Useful for CI servers. The Thorntail version that's used can be set via the ``thorntail.version`` property.
     
 The containers that download and install a server (the \*-ci-managed profiles) allow you to override the version used, e.g.:
 

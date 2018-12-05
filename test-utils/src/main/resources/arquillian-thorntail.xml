@@ -11,7 +11,7 @@
     <container qualifier="wildfly-swarm" default="true">
         <configuration>
             <property name="host">localhost</property>
-            <property name="port">${swarm.arquillian.daemon.port:12345}</property>
+            <property name="port">${thorntail.arquillian.daemon.port:12345}</property>
         </configuration>
     </container>
 
