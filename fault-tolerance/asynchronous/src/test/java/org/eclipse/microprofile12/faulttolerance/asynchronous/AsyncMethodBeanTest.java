@@ -36,7 +36,8 @@ public class AsyncMethodBeanTest {
         return create(WebArchive.class)
                     .addAsLibraries(awaitability())
                     .addClasses(MyAsyncBeanMethodLevel.class)
-                    .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+                    .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
+                    .addAsResource("project-defaults.yml");
     }
 
     @Test // Runs on Server
