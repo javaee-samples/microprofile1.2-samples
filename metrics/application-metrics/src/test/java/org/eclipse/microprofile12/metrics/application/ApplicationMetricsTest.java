@@ -67,8 +67,10 @@ public class ApplicationMetricsTest {
                         .get();
         String responseText = response.readEntity(String.class);
         System.out.println("testBasePrometheusMetrics " + responseText);
-        assertTrue(responseText.contains("# TYPE application:org_eclipse_microprofile12_metrics_application_user_resource_get_users counter"));
-        assertTrue(responseText.contains("# TYPE application:org_eclipse_microprofile12_metrics_application_user_resource_get_user_count gauge"));
+        assertTrue(responseText.contains("# TYPE application:org_eclipse_microprofile12_metrics_application_user_resource_get_users counter")
+                || responseText.contains("# TYPE application_org_eclipse_microprofile12_metrics_application_UserResource_getUsers_total counter"));
+        assertTrue(responseText.contains("# TYPE application:org_eclipse_microprofile12_metrics_application_user_resource_get_user_count gauge")
+                || responseText.contains("# TYPE application_org_eclipse_microprofile12_metrics_application_UserResource_getUserCount gauge"));
     }
 
     @Test

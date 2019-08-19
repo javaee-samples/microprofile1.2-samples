@@ -55,10 +55,14 @@ public class BaseMetricsTest {
                 .request(TEXT_PLAIN)
                 .get();
         String responseText = response.readEntity(String.class);
-        assertTrue(responseText.contains("# TYPE base:thread_max_count"));
-        assertTrue(responseText.contains("# TYPE base:thread_count"));
-        assertTrue(responseText.contains("# TYPE base:cpu_system_load_average"));
-        assertTrue(responseText.contains("# TYPE base:jvm_uptime"));
+        assertTrue(responseText.contains("# TYPE base:thread_max_count") 
+                || responseText.contains("# TYPE base_thread_max_count"));
+        assertTrue(responseText.contains("# TYPE base:thread_count") 
+                || responseText.contains("# TYPE base_thread_count"));
+        assertTrue(responseText.contains("# TYPE base:cpu_system_load_average") 
+                || responseText.contains("# TYPE base_cpu_systemLoadAverage"));
+        assertTrue(responseText.contains("# TYPE base:jvm_uptime") 
+                || responseText.contains("# TYPE base_jvm_uptime_seconds"));
     }
 
     @Test
